@@ -1,51 +1,53 @@
-const typeDefs = `
-type User {
-  _id: ID
-  username: String!
-  email: String!
-  password: String!
-  bookCount: Int
-  savedBooks: [Book]
-}
+import { gql } from 'graphql-tag';
 
-type Auth {
-    token: ID!
-    profile: Profile
+const typeDefs = gql`
+  # Top-level Query
+  type Query {
+    me: User
   }
 
-type UserInput {
-    username: String!
-    email: String!
-    password: String!
+  # Top-level Mutation
+  type Mutation {
+    login(email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth
+    saveBook(book: BookInput!): User
+    removeBook(bookId: ID!): User
   }
 
-type Book {
-    bookId: ID
+  # Input for saving a book
+  input BookInput {
+    bookId: String!
     authors: [String]
     description: String
     title: String
     image: String
     link: String
-    }
-
-type BookInput {
-    bookId: ID
-    title: String
-}
-
-type Query {
-    users: [User]!
-    user(username: String!): User
-    sip: User
   }
 
-type Mutation {
-  addUser(input: UserInput!): Auth
-  login(email: String!, password: String!): Auth
+  # Book type definition
+  type Book {
+    bookId: String!
+    authors: [String]
+    description: String
+    title: String
+    image: String
+    link: String
+  }
 
-  saveBook(username: String!, bookId: BookInput!): User
-  deleteBook(username: String!, bookId: ID!): User
-}
+  # Auth payload returned after login/signup
+  type Auth {
+    token: String!
+    user: User
+  }
+
+  # User type definition
+  type User {
+    _id: ID!
+    username: String!
+    email: String!
+    bookCount: Int
+    savedBooks: [Book]
+  }
 `;
 
 export default typeDefs;

@@ -1,38 +1,37 @@
-import { type JwtPayload, jwtDecode } from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 
-interface ExtendedJwt extends JwtPayload {
-  data:{
-    username:string,
-    email:string,
-    _id:string
-  }
-};
+interface UserToken {
+  name: string;
+  exp: number;
+}
+
 
 class AuthService {
+  // get user data
   getProfile() {
-    return jwtDecode<ExtendedJwt>(this.getToken());
+    return jwtDecode(this.getToken() || '');
   }
-
   loggedIn() {
     const token = this.getToken();
-    return !!token && !this.isTokenExpired(token);
+    return !!token && !this.isTokenExpired(token); ``
   }
 
+  
   isTokenExpired(token: string) {
     try {
-      const decoded = jwtDecode<JwtPayload>(token);
-
-      if (decoded?.exp && decoded?.exp < Date.now() / 1000) {
+      const decoded = jwtDecode<UserToken>(token);
+      if (decoded.exp < Date.now() / 1000) {
         return true;
-      }
+      } 
+      
+      return false;
     } catch (err) {
       return false;
     }
   }
 
-  getToken(): string {
-    const loggedUser = localStorage.getItem('id_token') || '';
-    return loggedUser;
+  getToken() {
+    return localStorage.getItem('id_token');
   }
 
   login(idToken: string) {
@@ -47,4 +46,5 @@ class AuthService {
 }
 
 export default new AuthService();
+
 
