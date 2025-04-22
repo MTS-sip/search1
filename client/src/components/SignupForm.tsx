@@ -8,7 +8,7 @@ import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 const SignupForm = ({}: { handleModalClose: () => void }) => {
-  // initialize form input state
+  // form input state
   const [userFormData, setUserFormData] = useState({
     username: '',
     email: '',
@@ -35,6 +35,7 @@ const SignupForm = ({}: { handleModalClose: () => void }) => {
   const handleFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    // check if form has everything (as per react-bootstrap docs)
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
@@ -61,7 +62,9 @@ const SignupForm = ({}: { handleModalClose: () => void }) => {
 
   return (
     <>
+     {/* This is needed for the validation functionality above */}
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
+         {/* show alert if server response is bad */}
         <Alert
           dismissible
           onClose={() => setShowAlert(false)}
