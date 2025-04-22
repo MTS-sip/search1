@@ -1,4 +1,4 @@
-import type { User } from '../models/User.js';
+/*import type { User } from '../models/User.js';
 import type { Book } from '../models/Book.js';
 
 // route to get logged in user's info (needs the token)
@@ -58,3 +58,4 @@ export const deleteBook = (bookId: string, token: string) => {
 export const searchGoogleBooks = (query: string) => {
   return fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
 };
+*/

@@ -21,4 +21,3 @@ export const removeBookId = (bookId: string): boolean => {
 
   return true;
 };
-

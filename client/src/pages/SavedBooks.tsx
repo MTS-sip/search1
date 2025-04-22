@@ -1,8 +1,9 @@
 import { Container, Card, Button, Row, Col } from 'react-bootstrap';
 import { useQuery, useMutation } from '@apollo/client';
-import { QUERY_ME } from '../utils/queries';
 import { REMOVE_BOOK } from '../utils/mutations';
+import { QUERY_ME } from '../utils/queries';
 import { removeBookId } from '../utils/localStorage';
+
 import Auth from '../utils/auth';
 import type { User } from '../models/User';
 import type { Book } from '../models/Book';
