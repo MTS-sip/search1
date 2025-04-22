@@ -1,4 +1,2 @@
-import typeDefs from './typeDefs.js';
-import resolvers from './resolvers.js';
-
-export { typeDefs, resolvers };
+import User from './User';
+export default { User };

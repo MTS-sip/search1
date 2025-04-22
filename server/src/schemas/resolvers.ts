@@ -1,8 +1,5 @@
-//import { UserInputError, AuthenticationError } from 'apollo-server-express';
 import User from '../models/User.js';
 import { signToken, AuthenticationError } from '../services/auth.js';
-//import type { Resolvers } from '@apollo/server-express';
-//import type { Context } from '../types/context';
 import type { UserDocument } from '../models/User';
 
 interface MeArgs {}
