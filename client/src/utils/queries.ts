@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_SIP = gql`
+export const QUERY_ME = gql`
   {
     sip{
       _id

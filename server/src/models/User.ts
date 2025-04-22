@@ -1,26 +1,21 @@
-import { Schema, model, Document } from 'mongoose';
+import { Schema, model, type Document } from 'mongoose';
 import bcrypt from 'bcrypt';
 
-interface IBook extends Document {
-  bookId: string;
-  title: string;
-  authors: string[];
-  description: string;
-  image: string;
-  link: string;
-}
+// import schema from Book.js
+import bookSchema from './Book.js';
+import type { BookDocument } from './Book.js';
 
-interface IUser extends Document {
-  _id: string;
+export interface UserDocument extends Document {
+  id: string;
   username: string;
   email: string;
   password: string;
-  savedBooks: IBook[];
+  savedBooks: BookDocument[];
   isCorrectPassword(password: string): Promise<boolean>;
-  bookCount?: number;
+  bookCount: number;
 }
 
-const userSchema = new Schema<IUser>(
+const userSchema = new Schema<UserDocument>(
   {
     username: {
       type: String,
@@ -37,24 +32,9 @@ const userSchema = new Schema<IUser>(
       type: String,
       required: true,
     },
-    savedBooks: {
-      type: [
-        {
-          bookId: { type: String, required: true },
-          title: { type: String, required: true },
-          authors: { type: [String], required: true },
-          description: { type: String },
-          image: { type: String },
-          link: { type: String },
-        },
-      ],
-    },
-    bookCount: {
-      type: Number,
-      default: 0,
-    },
+    
+    savedBooks: [bookSchema],
   },
-
   {
     toJSON: {
       virtuals: true,
@@ -62,8 +42,8 @@ const userSchema = new Schema<IUser>(
   }
 );
 
-// hash password
-userSchema.pre<IUser>('save', async function (next) {
+// hash user password
+userSchema.pre('save', async function (next) {
   if (this.isNew || this.isModified('password')) {
     const saltRounds = 10;
     this.password = await bcrypt.hash(this.password, saltRounds);
@@ -73,15 +53,16 @@ userSchema.pre<IUser>('save', async function (next) {
 });
 
 
-userSchema.methods.isCorrectPassword = async function (password: string): Promise<boolean> {
-  return bcrypt.compare(password, this.password);
+userSchema.methods.isCorrectPassword = async function (password: string) {
+  return await bcrypt.compare(password, this.password);
 };
 
-// get total count of books saved
+
 userSchema.virtual('bookCount').get(function () {
   return this.savedBooks.length;
 });
 
-const User = model<IUser>('User', userSchema);
+const User = model<UserDocument>('User', userSchema);
 
 export default User;
+
