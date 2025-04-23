@@ -1,10 +1,10 @@
-# # Virtual Book Find
+# Virtual Book Find
 
 ## Links
 
-- Link 🟢 Deployed URL 🔹 [Virtual Book Find}( 🔹
+- Link 🟢 Deployed URL 🔹 [Virtual Book Find on Render](https://search1-b5ob.onrender.com/)🔹
 
-- Link 🔴 GitHub Repository [https://github.com/MTS-sip/search1 🔴
+- Link 🔴 GitHub Repository [Virtual Book Find](https://github.com/MTS-sip/search1)🔴
 
 ## Description
 
@@ -24,14 +24,15 @@ Google Book Search App: Book results fetched from the Google Books API, includin
 
 For usage.
 
-- Clone Repository [Clone Repository](https://github.com/MTS-sip/search1)
-- npm install<br>
-- Create .env for connection to a MongoDB<br>
-  MONGO_URI=(the DB you are connecting to)<br>
-  JWT_SECRET=(create secret key)<br>
-- Run dev script in package.json<br>
+- [Clone Repository](https://github.com/MTS-sip/search1)
 
-- [Virtual Book Find](https://github.com/MTS-sip/search1))
+1. npm install<br>
+2. Create .env for connection to a MongoDB<br>
+   MONGO_URI=(the DB you are connecting to)<br>
+   JWT_SECRET=(create secret key)<br>
+3. Run dev script in package.json<br>
+
+- [Virtual Book Find](https://github.com/MTS-sip/search1)
 
 ### App Screenshots
 
@@ -74,8 +75,8 @@ Key technologies used for development:
 🔹 **Typescript**: [JavaScript w/syntax for types ](https://www.w3schools.com/typescript/typescript_intro.php)<br>
 🔹 **npm**: [Package manager for js](https://www.npmjs.com/)<br>
 🔹 **CoPilot**: [Copilot for GitHub](https://github.com/features/copilot?ef_id=_k_Cj0KCQjw4v6-BhDuARIsALprm30F26jOBa_tX-MdbRzSHmPNFiQCmfhZXt1XYobPc8mf7E3NM44SAmQaAipREALw_wcB_k_&OCID=AIDcmmb150vbv1_SEM__k_Cj0KCQjw4v6-BhDuARIsALprm30F26jOBa_tX-MdbRzSHmPNFiQCmfhZXt1XYobPc8mf7E3NM44SAmQaAipREALw_wcB_k_&gad_source=1&gclid=Cj0KCQjw4v6-BhDuARIsALprm30F26jOBa_tX-MdbRzSHmPNFiQCmfhZXt1XYobPc8mf7E3NM44SAmQaAipREALw_wcB)<br>
-**MonGoDB**:[MONGODB ATLAS](https://www.mongodb.com/)
-**ApolloServer**: [apollographql](https://www.apollographql.com/docs/apollo-server)
+🔹 **MonGoDB**:[MONGODB ATLAS](https://www.mongodb.com/)<br>
+🔹 **ApolloServer**: [apollographql](https://www.apollographql.com/docs/apollo-server)
 
 ### Contributing
 
